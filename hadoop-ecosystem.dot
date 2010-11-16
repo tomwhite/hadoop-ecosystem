@@ -1,0 +1,41 @@
+// dot -Tpng hadoop-ecosystem.dot -o hadoop-ecosystem.png
+digraph HadoopEcosystem {
+  MapReduce -> HDFS [label="reads from/\nwrites to"];
+  MapReduce -> HBase [label="reads from/\nwrites to"];
+  MapReduce -> Avro [label="reads/writes data\nencoded with"];
+  HBase -> HDFS [label="uses"];
+  HBase -> ZooKeeper [label="uses"];
+  Pig -> HDFS [label="reads from/\nwrites to"];
+  Pig -> HBase [label="reads from/\nwrites to"];
+  Pig -> MapReduce [label="uses"];
+  Pig -> Avro [label="reads/writes data\nencoded with*"];
+  Hive -> HDFS [label="reads from/\nwrites to"];
+  Hive -> HBase [label="reads from/\nwrites to"];
+  Hive -> MapReduce [label="uses"];
+  Hive -> ZooKeeper [label="uses*"];
+  Sqoop -> HDFS [label="imports to/\nexports from"];
+  Sqoop -> MapReduce [label="uses"];
+  Sqoop -> HBase [label="imports to"];
+  Sqoop -> Hive [label="imports to"];
+  Flume -> HDFS [label="writes to"];
+  Flume -> Avro [label="uses"];
+  Flume -> HBase [label="writes to*"];
+  Flume -> Hive [label="writes to*"];
+  Oozie -> HDFS [label="manipulates files in"];
+  Oozie -> MapReduce [label="runs jobs in"];
+  Oozie -> Pig [label="runs commands for"];
+  Oozie -> Hive [label="runs commands for"];
+  Oozie -> Sqoop [label="runs commands for"];
+  Whirr -> HDFS [label="launches"];
+  Whirr -> MapReduce [label="launches"];
+  Whirr -> ZooKeeper [label="launches"];
+  Mahout -> HDFS [label="uses"];
+  Mahout -> MapReduce [label="uses"];
+  Mahout -> HBase [label="uses"];
+  Cascading -> HDFS [label="reads from/\nwrites to"];
+  Cascading -> HBase [label="reads from/\nwrites to"];
+  Cascading -> MapReduce [label="uses"];
+
+  { rank=same; Oozie Whirr }
+
+}
