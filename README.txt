@@ -1,0 +1,1 @@
+A graph of the Hadoop Ecosystem. A dot file is used to describe the relationship between projects. Currently there are only a small number of projects, but feel free to fork and add more projects and relations.
