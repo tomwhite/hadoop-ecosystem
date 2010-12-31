@@ -27,11 +27,13 @@ def get_contributions(project, files):
   for file in files:
     doc = ET.parse(file)
     for item in doc.findall("channel/item"):
-      contributions.append((parsedate_tz(ElementWrapper(item).updated), ElementWrapper(item).assignee))
+      resolution_date = ElementWrapper(item).updated
+      for field in item.findall("customfields/customfield"):
+        if field.attrib["key"] == "com.atlassian.jira.ext.charting:resolutiondate":
+          resolution_date = field.findtext("customfieldvalues/customfieldvalue")
+      contributions.append((parsedate_tz(resolution_date), ElementWrapper(item).assignee))
   return contributions
 
 records = [(contributor, "%d-%02d" % (dt[0], dt[1])) for (dt, contributor) in get_contributions(project, files)]
 
-if project == 'hbase':
-  print records
 print generate_monthly_activity_page(project, records, threshold)
