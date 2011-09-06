@@ -32,11 +32,14 @@ def retrieve_jiras(project, project_id):
 # Find project IDs from https://issues.apache.org/jira/secure/BrowseProjects.jspa
 
 retrieve_jiras("avro", "12310911")
+retrieve_jiras("flume", "12311321")
 retrieve_jiras("hadoop-common", "12310240")
 retrieve_jiras("hadoop-hdfs", "12310942")
 retrieve_jiras("hadoop-mapreduce", "12310941")
 retrieve_jiras("hbase", "12310753")
-retrieve_jiras("pig", "12310730")
 retrieve_jiras("hive", "12310843")
+# oozie
+retrieve_jiras("pig", "12310730")
+retrieve_jiras("sqoop", "12311320")
 retrieve_jiras("whirr", "12311110")
 retrieve_jiras("zookeeper", "12310801")

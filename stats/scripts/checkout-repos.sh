@@ -4,6 +4,7 @@ bin=`dirname "$0"`
 bin=`cd "$bin"; pwd`
 BASE=$bin/..
 
+mkdir -p $BASE/data/repos
 cd $BASE/data/repos
 
 function checkout-repo() {
@@ -18,10 +19,13 @@ function checkout-repo() {
 }
 
 checkout-repo avro
+checkout-repo flume
 checkout-repo hadoop-hdfs
 checkout-repo hadoop-mapreduce
-checkout-repo pig
 checkout-repo hbase
 checkout-repo hive
+# oozie
+checkout-repo pig
+checkout-repo sqoop
 checkout-repo whirr
 checkout-repo zookeeper

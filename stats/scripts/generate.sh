@@ -17,7 +17,7 @@ for project in avro hadoop-hdfs hadoop-mapreduce hbase hive pig whirr zookeeper;
 done
 
 mkdir -p $OUTPUT/contributions-by-month/
-for project in avro hadoop-common hadoop-mapreduce hive pig whirr zookeeper; do
+for project in avro flume hadoop-common hadoop-mapreduce hive pig sqoop whirr zookeeper; do
   $SCRIPTS/contributions-by-month.py $project 1 $DATA/jiras/$project.*.xml \
     > $OUTPUT/contributions-by-month/$project.html
 done

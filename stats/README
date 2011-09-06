@@ -1,0 +1,10 @@
+Statistics for various Hadoop-related projects
+
+First get the data to be analyzed:
+
+  scripts/checkout-repos.sh
+  scripts/download-jiras.py
+
+Then run the analysis:
+
+  scripts/generate.sh
