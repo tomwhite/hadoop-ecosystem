@@ -27,7 +27,11 @@ for project in \
   zookeeper \
   ; do
   echo $project
-  $SCRIPTS/raw.py $project $DATA/repos/$project $DATA/jiras/$project.*.xml $OUTPUT/raw/$project.csv
+  #$SCRIPTS/raw.py $project $DATA/repos/$project $DATA/jiras/$project.*.xml $OUTPUT/raw/$project.csv
 done
 
+echo hadoop
+$SCRIPTS/raw.py hadoop $DATA/repos/hadoop $DATA/jiras/hadoop-common.*.xml $OUTPUT/raw/hadoop.csv
+
+rm -f $OUTPUT/raw.zip
 zip $OUTPUT/raw.zip $OUTPUT/raw/*
