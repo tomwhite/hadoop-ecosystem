@@ -67,7 +67,7 @@ def get_commits():
       continue
     hash, committer, date, message = fields
     jira = parse_jira(message)
-    contributors = ",".join(parse_contributors(message))
+    contributors = ";".join(parse_contributors(message))
     assignee = jira_to_assignee.get(jira, u'')
     insertions, deletions = find_change_summary(hash)
     records.append((hash, committer, date, jira, contributors, assignee, insertions, deletions, message))
@@ -92,13 +92,13 @@ def safe_unicode(obj, *args):
     
 # Following is convoluted due to UTF-8 problems - it could likely be simplified
 f = codecs.open(out,'w','utf-8')
-f.write("Commit hash\tCommitter email\tDate\tJira\tContributors\tAssignee\tInsertions\tDeletions\tCommit message\n")
+f.write("Commit hash,Committer email,Date,Jira,Contributors,Assignee,Insertions,Deletions,Commit message\n")
 for c in get_commits():
     for t in c:
       if type(t) == str:
         f.write(safe_unicode(t))
       else:
         f.write(t)
-      f.write("\t")
+      f.write(",")
     f.write("\n") 
 f.close()

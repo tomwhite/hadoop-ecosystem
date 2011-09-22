@@ -10,6 +10,24 @@ OUTPUT=$BASE/output
 mkdir -p $OUTPUT
 
 mkdir -p $OUTPUT/raw
-for project in avro; do
-  $SCRIPTS/raw.py $project $DATA/repos/$project $DATA/jiras/$project.*.xml $OUTPUT/raw/$project.tsv
+for project in \
+  avro \
+  flume \
+  hadoop-common \
+  hadoop-hdfs \
+  hadoop-mapreduce \
+  hbase \
+  hcatalog \
+  hive \
+  hue \
+  mahout \
+  pig \
+  sqoop \
+  whirr \
+  zookeeper \
+  ; do
+  echo $project
+  $SCRIPTS/raw.py $project $DATA/repos/$project $DATA/jiras/$project.*.xml $OUTPUT/raw/$project.csv
 done
+
+zip $OUTPUT/raw.zip $OUTPUT/raw/*
