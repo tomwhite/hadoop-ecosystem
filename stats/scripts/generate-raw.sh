@@ -27,7 +27,7 @@ for project in \
   zookeeper \
   ; do
   echo $project
-  #$SCRIPTS/raw.py $project $DATA/repos/$project $DATA/jiras/$project.*.xml $OUTPUT/raw/$project.csv
+  $SCRIPTS/raw.py $project $DATA/repos/$project $DATA/jiras/$project.*.xml $OUTPUT/raw/$project.csv
 done
 
 echo hadoop
